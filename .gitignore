@@ -1,5 +1,7 @@
 .DS_Store
 *.log
+!.Log/
+!.Log/巡检-社会-*.md
 node_modules/
 .venv/
 __pycache__/
