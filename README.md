@@ -16,11 +16,12 @@
 - T4 每日 02:00 检查项目并更新 .plan/YYYYMMDD.md
 - T5 每日 03:00 完成小步开发并 commit + push
 
-## 状态(2026-08-25)
-- **Phase 0**: 1/6 完成(初始议题库首批 10 条,见 `data/issues.yaml`)
+## 状态(2026-08-27)
+- **Phase 0**: 3/6 完成(初始议题库 + 自动化抽取 + 议题关系图,见 `data/issues.yaml` + `data/issue_relations.yaml`)
 - **Phase 1**: 0/6 待启动(Web App 骨架未搭建)
 
 ## 关联文档
 - 产品立项与技术方案: [项目开发计划.md](./项目开发计划.md)
 - 议题库字段规范: [data/issues.schema.md](./data/issues.schema.md)
-- 巡检报告: [.Log/巡检-社会-20260825.md](./.Log/巡检-社会-20260825.md)
+- 议题关系图规范: [data/issue_relations.schema.md](./data/issue_relations.schema.md)
+- 巡检报告: [.Log/巡检-社会-20260827.md](./.Log/巡检-社会-20260827.md)

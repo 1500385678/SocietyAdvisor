@@ -1,0 +1,95 @@
+# SocietyAdvisor · 议题关系图(Phase 0 #3 首批 12 条)
+# 用途:Phase 0 议题图谱骨架,服务 issues_relations 表 + Web 端图谱可视化
+# 字段规范:见 ./issue_relations.schema.md
+# 维护:每条目 1 行关键变更,新增走 append,废弃走 archive/
+
+relations:
+
+  # ── 经济 → 社会 ─────────────────────────────────────────
+  - source: issue-001   # 就业形势
+    target: issue-009   # 老龄化
+    relation: influence
+    weight: 0.65
+    note: 老龄化加深劳动力短缺,推升青年就业结构性压力(延迟退休叠加)
+    created_at: 2026-08-27
+
+  - source: issue-001   # 就业形势
+    target: issue-010   # 性别议题
+    relation: related
+    weight: 0.45
+    note: 平台经济+灵活就业模糊性别用工边界,生育成本加剧职场性别歧视
+    created_at: 2026-08-27
+
+  - source: issue-002   # 房地产周期
+    target: issue-001   # 就业形势
+    relation: cause
+    weight: 0.55
+    note: 房企收缩→上下游产业链岗位流失(建筑/中介/家居),拖累就业总量
+    created_at: 2026-08-27
+
+  # ── 经济 → 科技 ─────────────────────────────────────────
+  - source: issue-005   # AI 伦理
+    target: issue-001   # 就业形势
+    relation: influence
+    weight: 0.70
+    note: 生成式 AI 加速替代文案/客服/初级编程等白领岗位,与高校扩招形成就业"剪刀差",扩大结构性失业
+    created_at: 2026-08-27
+
+  - source: issue-005   # AI 伦理
+    target: issue-006   # 数据隐私
+    relation: related
+    weight: 0.60
+    note: 大模型训练数据合规与《个人信息保护法》监管交叉,违规爬取与数据跨境流动成为双轨治理重点
+    created_at: 2026-08-27
+
+  # ── 科技 → 教育 ─────────────────────────────────────────
+  - source: issue-005   # AI 伦理
+    target: issue-003   # 双减政策
+    relation: related
+    weight: 0.40
+    note: AI 学习机/智能助教成为教培转型主要方向,引发"AI 是否加重教育内卷"与算法公平性讨论
+    created_at: 2026-08-27
+
+  - source: issue-006   # 数据隐私
+    target: issue-004   # 高考改革
+    relation: related
+    weight: 0.35
+    note: 综合素质评价涉及学生行为轨迹与社会实践数据采集,未成年人隐私边界与监护人授权成为新议题
+    created_at: 2026-08-27
+
+  # ── 环境 → 经济 ─────────────────────────────────────────
+  - source: issue-007   # 碳中和
+    target: issue-002   # 房地产周期
+    relation: influence
+    weight: 0.45
+    note: 绿色建筑标准与超低能耗要求抬升房企改造成本,中小开发商出清加速,推动行业向央国企集中
+    created_at: 2026-08-27
+
+  - source: issue-007   # 碳中和
+    target: issue-001   # 就业形势
+    relation: influence
+    weight: 0.50
+    note: 新能源装机/储能/碳市场扩张创造大量技术岗位,部分对冲传统高耗能行业减排带来的失业压力
+    created_at: 2026-08-27
+
+  - source: issue-008   # 垃圾分类
+    target: issue-007   # 碳中和
+    relation: influence
+    weight: 0.40
+    note: 末端处理路径(焚烧发电/填埋/再生资源)直接决定城市碳排放与全国碳市场配额,影响碳中和进度
+    created_at: 2026-08-27
+
+  # ── 社会 → 经济 ─────────────────────────────────────────
+  - source: issue-009   # 老龄化
+    target: issue-007   # 碳中和
+    relation: related
+    weight: 0.30
+    note: 养老照护+绿色产业(健康辅具/康复设备/居家适老化改造)成为银发经济新增长点,与碳中和产业融合
+    created_at: 2026-08-27
+
+  - source: issue-010   # 性别议题
+    target: issue-009   # 老龄化
+    relation: cause
+    weight: 0.55
+    note: 生育率持续下行直接加速人口老龄化进程,职场性别平等与生育成本分担政策成为应对关键变量
+    created_at: 2026-08-27
