@@ -16,9 +16,13 @@
 - T4 每日 02:00 检查项目并更新 .plan/YYYYMMDD.md
 - T5 每日 03:00 完成小步开发并 commit + push
 
-## 状态(2026-08-27)
-- **Phase 0**: 3/6 完成(初始议题库 + 自动化抽取 + 议题关系图,见 `data/issues.yaml` + `data/issue_relations.yaml`)
+## 状态(2026-08-28)
+- **Phase 0**: 4/6 完成(初始议题库 + 自动化抽取 + 议题关系图 + FastAPI 骨架,见 `data/issues.yaml` + `data/issue_relations.yaml` + `app/`)
 - **Phase 1**: 0/6 待启动(Web App 骨架未搭建)
+
+## API 骨架(Phase 0 #5)
+- 入口:`app/main.py` · 启动 `uvicorn app.main:app --port 8000` → <http://localhost:8000/docs>
+- 路由:`/health` `/graph` `/pulse`,详见 [app/README.md](./app/README.md)
 
 ## 关联文档
 - 产品立项与技术方案: [项目开发计划.md](./项目开发计划.md)
