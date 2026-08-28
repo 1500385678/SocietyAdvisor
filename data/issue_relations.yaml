@@ -93,3 +93,46 @@ relations:
     weight: 0.55
     note: 生育率持续下行直接加速人口老龄化进程,职场性别平等与生育成本分担政策成为应对关键变量
     created_at: 2026-08-27
+
+  # ── 2026-08-29 续:把首批新议题(011~015)接入图谱,首批 12 → 18 条边 ──
+  - source: issue-011   # 人口政策
+    target: issue-009   # 老龄化
+    relation: cause
+    weight: 0.85
+    note: 生育率/婚育补贴/辅助生殖政策直接决定中长期人口结构,是应对老龄化的核心政策杠杆
+    created_at: 2026-08-29
+
+  - source: issue-011   # 人口政策
+    target: issue-010   # 性别议题
+    relation: related
+    weight: 0.75
+    note: 生育支持政策与职场性别平等、托育供给、生育成本分担机制深度绑定,影响女性就业意愿
+    created_at: 2026-08-29
+
+  - source: issue-012   # 教育改革
+    target: issue-003   # 双减政策
+    relation: influence
+    weight: 0.50
+    note: 普职分流与高中阶段多样化是双减后基础教育体系重构的关键制度配套,直接影响双减长期效果
+    created_at: 2026-08-29
+
+  - source: issue-013   # 数字鸿沟
+    target: issue-009   # 老龄化
+    relation: related
+    weight: 0.45
+    note: 适老化改造与老年人数字工具普及是应对老龄化"数字难民"问题的关键,纳入智慧城市评估
+    created_at: 2026-08-29
+
+  - source: issue-014   # 医疗资源
+    target: issue-009   # 老龄化
+    relation: influence
+    weight: 0.55
+    note: 老龄化推升医保支出与慢病管理需求,DRG/集采改革与分级诊疗建设决定医疗体系可持续承载力
+    created_at: 2026-08-29
+
+  - source: issue-015   # 乡村振兴
+    target: issue-001   # 就业形势
+    relation: influence
+    weight: 0.40
+    note: 县域经济/返乡创业/村集体经济扩张创造本地非农岗位,部分对冲城市就业总量下行与高校就业压力
+    created_at: 2026-08-29

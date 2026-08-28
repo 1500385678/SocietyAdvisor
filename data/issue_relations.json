@@ -1,1 +1,187 @@
-{"meta":{"source":"data/issue_relations.yaml","count":12,"generated_at":"2026-08-27T03:22:57","schema_version":"1.0","relation_distribution":{"influence":5,"related":5,"cause":2},"check_issues":"data/issues.yaml","node_stats":{"out_degree":{"issue-005":3,"issue-001":2,"issue-002":1,"issue-010":1,"issue-007":2,"issue-008":1,"issue-006":1,"issue-009":1},"in_degree":{"issue-001":3,"issue-009":2,"issue-006":1,"issue-010":1,"issue-002":1,"issue-003":1,"issue-007":2,"issue-004":1}}},"relations":[{"source":"issue-005","target":"issue-001","relation":"influence","weight":0.7,"note":"生成式 AI 加速替代文案/客服/初级编程等白领岗位,与高校扩招形成就业\"剪刀差\",扩大结构性失业","created_at":"2026-08-27"},{"source":"issue-001","target":"issue-009","relation":"influence","weight":0.65,"note":"老龄化加深劳动力短缺,推升青年就业结构性压力(延迟退休叠加)","created_at":"2026-08-27"},{"source":"issue-005","target":"issue-006","relation":"related","weight":0.6,"note":"大模型训练数据合规与《个人信息保护法》监管交叉,违规爬取与数据跨境流动成为双轨治理重点","created_at":"2026-08-27"},{"source":"issue-002","target":"issue-001","relation":"cause","weight":0.55,"note":"房企收缩→上下游产业链岗位流失(建筑/中介/家居),拖累就业总量","created_at":"2026-08-27"},{"source":"issue-010","target":"issue-009","relation":"cause","weight":0.55,"note":"生育率持续下行直接加速人口老龄化进程,职场性别平等与生育成本分担政策成为应对关键变量","created_at":"2026-08-27"},{"source":"issue-007","target":"issue-001","relation":"influence","weight":0.5,"note":"新能源装机/储能/碳市场扩张创造大量技术岗位,部分对冲传统高耗能行业减排带来的失业压力","created_at":"2026-08-27"},{"source":"issue-001","target":"issue-010","relation":"related","weight":0.45,"note":"平台经济+灵活就业模糊性别用工边界,生育成本加剧职场性别歧视","created_at":"2026-08-27"},{"source":"issue-007","target":"issue-002","relation":"influence","weight":0.45,"note":"绿色建筑标准与超低能耗要求抬升房企改造成本,中小开发商出清加速,推动行业向央国企集中","created_at":"2026-08-27"},{"source":"issue-005","target":"issue-003","relation":"related","weight":0.4,"note":"AI 学习机/智能助教成为教培转型主要方向,引发\"AI 是否加重教育内卷\"与算法公平性讨论","created_at":"2026-08-27"},{"source":"issue-008","target":"issue-007","relation":"influence","weight":0.4,"note":"末端处理路径(焚烧发电/填埋/再生资源)直接决定城市碳排放与全国碳市场配额,影响碳中和进度","created_at":"2026-08-27"},{"source":"issue-006","target":"issue-004","relation":"related","weight":0.35,"note":"综合素质评价涉及学生行为轨迹与社会实践数据采集,未成年人隐私边界与监护人授权成为新议题","created_at":"2026-08-27"},{"source":"issue-009","target":"issue-007","relation":"related","weight":0.3,"note":"养老照护+绿色产业(健康辅具/康复设备/居家适老化改造)成为银发经济新增长点,与碳中和产业融合","created_at":"2026-08-27"}]}
+{
+  "meta": {
+    "source": "data/issue_relations.yaml",
+    "count": 18,
+    "generated_at": "2026-08-29T03:21:19",
+    "schema_version": "1.0",
+    "relation_distribution": {
+      "cause": 3,
+      "related": 7,
+      "influence": 8
+    },
+    "check_issues": "data/issues.yaml",
+    "node_stats": {
+      "out_degree": {
+        "issue-011": 2,
+        "issue-005": 3,
+        "issue-001": 2,
+        "issue-002": 1,
+        "issue-010": 1,
+        "issue-014": 1,
+        "issue-007": 2,
+        "issue-012": 1,
+        "issue-013": 1,
+        "issue-008": 1,
+        "issue-015": 1,
+        "issue-006": 1,
+        "issue-009": 1
+      },
+      "in_degree": {
+        "issue-009": 5,
+        "issue-010": 2,
+        "issue-001": 4,
+        "issue-006": 1,
+        "issue-003": 2,
+        "issue-002": 1,
+        "issue-007": 2,
+        "issue-004": 1
+      }
+    }
+  },
+  "relations": [
+    {
+      "source": "issue-011",
+      "target": "issue-009",
+      "relation": "cause",
+      "weight": 0.85,
+      "note": "生育率/婚育补贴/辅助生殖政策直接决定中长期人口结构,是应对老龄化的核心政策杠杆",
+      "created_at": "2026-08-29"
+    },
+    {
+      "source": "issue-011",
+      "target": "issue-010",
+      "relation": "related",
+      "weight": 0.75,
+      "note": "生育支持政策与职场性别平等、托育供给、生育成本分担机制深度绑定,影响女性就业意愿",
+      "created_at": "2026-08-29"
+    },
+    {
+      "source": "issue-005",
+      "target": "issue-001",
+      "relation": "influence",
+      "weight": 0.7,
+      "note": "生成式 AI 加速替代文案/客服/初级编程等白领岗位,与高校扩招形成就业\"剪刀差\",扩大结构性失业",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-001",
+      "target": "issue-009",
+      "relation": "influence",
+      "weight": 0.65,
+      "note": "老龄化加深劳动力短缺,推升青年就业结构性压力(延迟退休叠加)",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-005",
+      "target": "issue-006",
+      "relation": "related",
+      "weight": 0.6,
+      "note": "大模型训练数据合规与《个人信息保护法》监管交叉,违规爬取与数据跨境流动成为双轨治理重点",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-002",
+      "target": "issue-001",
+      "relation": "cause",
+      "weight": 0.55,
+      "note": "房企收缩→上下游产业链岗位流失(建筑/中介/家居),拖累就业总量",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-010",
+      "target": "issue-009",
+      "relation": "cause",
+      "weight": 0.55,
+      "note": "生育率持续下行直接加速人口老龄化进程,职场性别平等与生育成本分担政策成为应对关键变量",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-014",
+      "target": "issue-009",
+      "relation": "influence",
+      "weight": 0.55,
+      "note": "老龄化推升医保支出与慢病管理需求,DRG/集采改革与分级诊疗建设决定医疗体系可持续承载力",
+      "created_at": "2026-08-29"
+    },
+    {
+      "source": "issue-007",
+      "target": "issue-001",
+      "relation": "influence",
+      "weight": 0.5,
+      "note": "新能源装机/储能/碳市场扩张创造大量技术岗位,部分对冲传统高耗能行业减排带来的失业压力",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-012",
+      "target": "issue-003",
+      "relation": "influence",
+      "weight": 0.5,
+      "note": "普职分流与高中阶段多样化是双减后基础教育体系重构的关键制度配套,直接影响双减长期效果",
+      "created_at": "2026-08-29"
+    },
+    {
+      "source": "issue-001",
+      "target": "issue-010",
+      "relation": "related",
+      "weight": 0.45,
+      "note": "平台经济+灵活就业模糊性别用工边界,生育成本加剧职场性别歧视",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-007",
+      "target": "issue-002",
+      "relation": "influence",
+      "weight": 0.45,
+      "note": "绿色建筑标准与超低能耗要求抬升房企改造成本,中小开发商出清加速,推动行业向央国企集中",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-013",
+      "target": "issue-009",
+      "relation": "related",
+      "weight": 0.45,
+      "note": "适老化改造与老年人数字工具普及是应对老龄化\"数字难民\"问题的关键,纳入智慧城市评估",
+      "created_at": "2026-08-29"
+    },
+    {
+      "source": "issue-005",
+      "target": "issue-003",
+      "relation": "related",
+      "weight": 0.4,
+      "note": "AI 学习机/智能助教成为教培转型主要方向,引发\"AI 是否加重教育内卷\"与算法公平性讨论",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-008",
+      "target": "issue-007",
+      "relation": "influence",
+      "weight": 0.4,
+      "note": "末端处理路径(焚烧发电/填埋/再生资源)直接决定城市碳排放与全国碳市场配额,影响碳中和进度",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-015",
+      "target": "issue-001",
+      "relation": "influence",
+      "weight": 0.4,
+      "note": "县域经济/返乡创业/村集体经济扩张创造本地非农岗位,部分对冲城市就业总量下行与高校就业压力",
+      "created_at": "2026-08-29"
+    },
+    {
+      "source": "issue-006",
+      "target": "issue-004",
+      "relation": "related",
+      "weight": 0.35,
+      "note": "综合素质评价涉及学生行为轨迹与社会实践数据采集,未成年人隐私边界与监护人授权成为新议题",
+      "created_at": "2026-08-27"
+    },
+    {
+      "source": "issue-009",
+      "target": "issue-007",
+      "relation": "related",
+      "weight": 0.3,
+      "note": "养老照护+绿色产业(健康辅具/康复设备/居家适老化改造)成为银发经济新增长点,与碳中和产业融合",
+      "created_at": "2026-08-27"
+    }
+  ]
+}
