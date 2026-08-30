@@ -1,0 +1,138 @@
+# SocietyAdvisor · 舆情快照首批(Phase 0 #4 灌库起步)
+# 用途:/pulse 路由契约测试 + 飞书日报"近 7 日声量"段数据源
+# 字段规范:见 ./pulse_snapshots.schema.md v1.0
+# 维护:T5 周期扩 issue / 扩日期,Phase 1 接入真实 API 后替换为自动采集
+# 数据性质:**Phase 0 全部为手工合成模拟值,不代表真实声量**,仅用于接口契约
+
+snapshots:
+
+  # === issue-001 就业形势(经济)·近 3 日 ===
+  - issue_id: issue-001
+    source: hybrid
+    volume: 1240
+    sentiment_pos: 0.18
+    sentiment_neu: 0.41
+    sentiment_neg: 0.41
+    snapshot_date: 2026-08-25
+    note: "模拟值,8/25 青年失业率数据发布引发讨论"
+
+  - issue_id: issue-001
+    source: hybrid
+    volume: 980
+    sentiment_pos: 0.21
+    sentiment_neu: 0.45
+    sentiment_neg: 0.34
+    snapshot_date: 2026-08-27
+    note: "模拟值,8/27 高校毕业生秋季招聘启动"
+
+  - issue_id: issue-001
+    source: hybrid
+    volume: 1530
+    sentiment_pos: 0.15
+    sentiment_neu: 0.38
+    sentiment_neg: 0.47
+    snapshot_date: 2026-08-29
+    note: "模拟值,8/29 平台经济新规草案讨论"
+
+  # === issue-002 房地产周期(经济)·近 2 日 ===
+  - issue_id: issue-002
+    source: hybrid
+    volume: 870
+    sentiment_pos: 0.12
+    sentiment_neu: 0.35
+    sentiment_neg: 0.53
+    snapshot_date: 2026-08-26
+    note: "模拟值,8/26 头部房企中报披露"
+
+  - issue_id: issue-002
+    source: hybrid
+    volume: 1120
+    sentiment_pos: 0.14
+    sentiment_neu: 0.33
+    sentiment_neg: 0.53
+    snapshot_date: 2026-08-28
+    note: "模拟值,8/28 二手房价格指数发布"
+
+  # === issue-005 AI 伦理(科技)·近 2 日 ===
+  - issue_id: issue-005
+    source: hybrid
+    volume: 2100
+    sentiment_pos: 0.32
+    sentiment_neu: 0.40
+    sentiment_neg: 0.28
+    snapshot_date: 2026-08-25
+    note: "模拟值,8/25 生成式 AI 行业自律公约发布"
+
+  - issue_id: issue-005
+    source: hybrid
+    volume: 1780
+    sentiment_pos: 0.28
+    sentiment_neu: 0.42
+    sentiment_neg: 0.30
+    snapshot_date: 2026-08-28
+    note: "模拟值,8/28 头部模型厂商发布会后续讨论"
+
+  # === issue-009 老龄化(社会)·近 2 日 ===
+  - issue_id: issue-009
+    source: hybrid
+    volume: 560
+    sentiment_pos: 0.22
+    sentiment_neu: 0.50
+    sentiment_neg: 0.28
+    snapshot_date: 2026-08-27
+    note: "模拟值,8/27 养老服务消费季启动"
+
+  - issue_id: issue-009
+    source: hybrid
+    volume: 690
+    sentiment_pos: 0.20
+    sentiment_neu: 0.48
+    sentiment_neg: 0.32
+    snapshot_date: 2026-08-29
+    note: "模拟值,8/29 银发经济白皮书讨论"
+
+  # === issue-011 人口政策(社会)·近 2 日 ===
+  - issue_id: issue-011
+    source: hybrid
+    volume: 1450
+    sentiment_pos: 0.16
+    sentiment_neu: 0.34
+    sentiment_neg: 0.50
+    snapshot_date: 2026-08-26
+    note: "模拟值,8/26 生育支持政策细则落地"
+
+  - issue_id: issue-011
+    source: hybrid
+    volume: 1320
+    sentiment_pos: 0.18
+    sentiment_neu: 0.36
+    sentiment_neg: 0.46
+    snapshot_date: 2026-08-28
+    note: "模拟值,8/28 地方育儿补贴方案对比"
+
+  # === issue-012 教育改革(教育)·近 2 日 ===
+  - issue_id: issue-012
+    source: hybrid
+    volume: 1820
+    sentiment_pos: 0.19
+    sentiment_neu: 0.31
+    sentiment_neg: 0.50
+    snapshot_date: 2026-08-25
+    note: "模拟值,8/25 开学季双减后续讨论"
+
+  - issue_id: issue-012
+    source: hybrid
+    volume: 1090
+    sentiment_pos: 0.22
+    sentiment_neu: 0.35
+    sentiment_neg: 0.43
+    snapshot_date: 2026-08-27
+    note: "模拟值,8/27 高中阶段学制改革讨论"
+
+# === 元数据 ===
+meta:
+  total: 13
+  issues_covered: 6   # issue-001/002/005/009/011/012
+  date_range: [2026-08-25, 2026-08-29]
+  phase: "Phase 0 #4 起步 · 2026-08-31 T5 周期"
+  next_step: "9/1 T5 周期:扩展 schemas.PulseSnapshot + /pulse 路由读取快照"
