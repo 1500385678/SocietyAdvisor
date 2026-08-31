@@ -1,8 +1,8 @@
 """SocietyAdvisor FastAPI 入口。
 
-Phase 0 #5 最小骨架,挂载 2 个路由:
-  GET /graph   议题图谱(节点 + 边) - working
-  GET /pulse   舆情切片              - Phase 0 桩,等待 #4 完成
+Phase 0 骨架(6/6 已收尾,9/1 T5 周期 #4 第二步完成 /pulse 真实读取):
+  GET /graph   议题图谱(节点 + 边)        - working
+  GET /pulse   舆情切片(单议题多源聚合)   - working(读 pulse_snapshots.yaml)
   GET /health  健康检查
 
 启动:uvicorn app.main:app --reload --port 8000
@@ -17,7 +17,7 @@ from app.routers import graph, pulse
 app = FastAPI(
     title="SocietyAdvisor API",
     version=__version__,
-    description="09-社会-Society 行业顾问 API · Phase 0 骨架",
+    description="09-社会-Society 行业顾问 API · Phase 0 收尾(6/6)",
 )
 app.include_router(graph.router)
 app.include_router(pulse.router)

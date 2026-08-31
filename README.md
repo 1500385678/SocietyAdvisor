@@ -16,17 +16,21 @@
 - T4 每日 02:00 检查项目并更新 .plan/YYYYMMDD.md
 - T5 每日 03:00 完成小步开发并 commit + push
 
-## 状态(2026-08-29)
-- **Phase 0**: 4/6 完成(初始议题库 + 自动化抽取 + 议题关系图 + FastAPI 骨架,见 `data/issues.yaml` + `data/issue_relations.yaml` + `app/`)
+## 状态(2026-09-01)
+- **Phase 0**: 6/6 完成 ✅(初始议题库 + 自动化抽取 + 议题关系图 + FastAPI 骨架 + 历史舆情快照灌库 + /pulse 真实读取,9/1 T5 周期收尾)
   - 2026-08-29 续:议题库 10 → 15(新增 issue-011 人口政策 / 012 教育改革 / 013 数字鸿沟 / 014 医疗资源 / 015 乡村振兴),关系图 12 → 18 条边
-- **Phase 1**: 0/6 待启动(Web App 骨架未搭建)
+  - 2026-08-31 续:Phase 0 #4 起步 — `pulse_snapshots.schema.md` v1.0 + 首批 13 条模拟快照(6 议题 × 5 天)
+  - 2026-09-01 续:Phase 0 #4 第二步 — `PulseSnapshot` / `PulseSeries` schema + `/pulse` 路由读真实数据,Phase 0 收尾 6/6
+- **Phase 1**: 0/7 待启动(Web App 骨架未搭建)
 
-## API 骨架(Phase 0 #5)
+## API 骨架(Phase 0 收尾)
 - 入口:`app/main.py` · 启动 `uvicorn app.main:app --port 8000` → <http://localhost:8000/docs>
 - 路由:`/health` `/graph` `/pulse`,详见 [app/README.md](./app/README.md)
+- /pulse 用法:`GET /pulse?issue_id=issue-001` → 单议题多源时间序列;`&source=hybrid` 按来源过滤
 
 ## 关联文档
 - 产品立项与技术方案: [项目开发计划.md](./项目开发计划.md)
 - 议题库字段规范: [data/issues.schema.md](./data/issues.schema.md)
 - 议题关系图规范: [data/issue_relations.schema.md](./data/issue_relations.schema.md)
-- 巡检报告: [.Log/巡检-社会-20260827.md](./.Log/巡检-社会-20260827.md)
+- 舆情快照字段规范: [data/pulse_snapshots.schema.md](./data/pulse_snapshots.schema.md)
+- 巡检报告: [.Log/巡检-社会-20260901.md](./.Log/巡检-社会-20260901.md)
