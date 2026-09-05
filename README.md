@@ -16,14 +16,15 @@
 - T4 每日 02:00 检查项目并更新 .plan/YYYYMMDD.md
 - T5 每日 03:00 完成小步开发并 commit + push
 
-## 状态(2026-09-04)
-- **Phase 0**: 6/6 完成 ✅(初始议题库 + 自动化抽取 + 议题关系图 + FastAPI 骨架 + 历史舆情快照灌库 + /pulse 真实读取,9/1 T5 周期收尾)
+## 状态(2026-09-06)
+- **Phase 0**: 7/6 严格计数 ✅(超额 1 项 = 飞书日报生成器脚本骨架,9/4 T5 周期叠加,9/6 README 状态段与项目开发计划.md 严格计数同步;原 6/6 主体任务 9/1 T5 周期收尾)
   - 2026-08-29 续:议题库 10 → 15(新增 issue-011 人口政策 / 012 教育改革 / 013 数字鸿沟 / 014 医疗资源 / 015 乡村振兴),关系图 12 → 18 条边
   - 2026-08-31 续:Phase 0 #4 起步 — `pulse_snapshots.schema.md` v1.0 + 首批 13 条模拟快照(6 议题 × 5 天)
-  - 2026-09-01 续:Phase 0 #4 第二步 — `PulseSnapshot` / `PulseSeries` schema + `/pulse` 路由读真实数据,Phase 0 收尾 6/6
-  - 2026-09-02 续(质量层):新增 `scripts/validate_pulse.py` 校验脚本(13/13 通过 + 外键 100% 命中 + 唯一性 0 冲突),Phase 0 计数仍 6/6,质量层叠加
-  - 2026-09-03 续(质量层 · 工具链):新增 `scripts/issue_summary.py` 数据汇总 CLI(15 议题 / 18 边 / 5 category,跨表校验 0 孤儿边,`--json` / `--strict` / `--top K` 三档开关),Phase 0 计数仍 6/6,工具链补完
-  - 2026-09-04 续(Phase 0 #6 起步 · 飞书日报):新增 `scripts/daily_report.py` 飞书日报生成器(4 段结构:Top 10 热度 + 声量监控汇总 + 关系图出入度 + 报告元信息,`--json` / `--strict` / `--output` / `--date` / `--top K` 五档开关,Markdown + JSON 双输出),Phase 0 #6 从 `[ ]` → `[x] 起步`(脚本骨架层,真实 cron 调度留待后续周期)
+  - 2026-09-01 续:Phase 0 #4 第二步 — `PulseSnapshot` / `PulseSeries` schema + `/pulse` 路由读真实数据,Phase 0 主体 6/6 收尾
+  - 2026-09-02 续(质量层):新增 `scripts/validate_pulse.py` 校验脚本(13/13 通过 + 外键 100% 命中 + 唯一性 0 冲突),Phase 0 主体 6/6 + 质量层叠加
+  - 2026-09-03 续(质量层 · 工具链):新增 `scripts/issue_summary.py` 数据汇总 CLI(15 议题 / 18 边 / 5 category,跨表校验 0 孤儿边,`--json` / `--strict` / `--top K` 三档开关),Phase 0 主体 6/6 + 工具链补完
+  - 2026-09-04 续(Phase 0 #6 起步 · 飞书日报):新增 `scripts/daily_report.py` 飞书日报生成器(4 段结构:Top 10 热度 + 声量监控汇总 + 关系图出入度 + 报告元信息,`--json` / `--strict` / `--output` / `--date` / `--top K` 五档开关,Markdown + JSON 双输出),Phase 0 严格计数 7/6(原 6/6 + 飞书日报生成器脚本骨架层,真实 cron 调度留待后续周期)
+  - 2026-09-05 续(.plan/ 模式根因修复):`.gitignore` 末行加入 `.plan/   # 本地临时 plan 草稿,不入库` 排除规则,根除 9/2→9/3→9/4→9/5 4 周期 T1 报"uncommitted deletion"模式,9/6 02:20 巡检时点 working tree 完全 clean
 - **Phase 1**: 0/7 待启动(Web App 骨架未搭建)
 
 ## API 骨架(Phase 0 收尾)
