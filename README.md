@@ -16,8 +16,9 @@
 - T4 每日 02:00 检查项目并更新 .plan/YYYYMMDD.md
 - T5 每日 03:00 完成小步开发并 commit + push
 
-## 状态(2026-09-08)
+## 状态(2026-09-09)
 - **Phase 0**: 7/6 严格计数 ✅(超额 1 项 = 飞书日报生成器脚本骨架,9/4 T5 周期叠加,9/6 README 状态段与项目开发计划.md 严格计数同步;原 6/6 主体任务 9/1 T5 周期收尾)
+- **Phase 0 #6 飞书真推送补完(9/9)**:新增 `scripts/feishu_publish.py` 真飞书 webhook 推送模块(stdlib urllib 投递,无第三方 HTTP 依赖;`msg_type=text` 协议;`--webhook-url` / `--text` / `--from-file` / `--title` / `--transport` 5 档开关;退出码 0 成功 / 1 参数错 / 2 缺依赖 / 3 网络 / 4 4xx / 5 5xx / 6 其他;--dry-run 降级预览);`scripts/run_daily_report.sh` 9/8 预留的 `--push-stub` 升级为 `--push`(真调 `feishu_publish.py --from-file`),新增 `--push-dry-run`(隐式打开 PUSH,只预览 payload)/ `--webhook-url`(显式传,env 兜底)/ `--push-stub` 旧名兼容;手测 `bash scripts/run_daily_report.sh --push-dry-run` 输出 9/8 推送 payload 预览(标题前缀 `【SocietyAdvisor 日报 20260908】` + 1454 字符全文),`--push --webhook-url https://httpbin.org/status/200` 走通 stdlib urllib 真投递 HTTP 200 / 4xx → exit 4 / 5xx → exit 5 / DNS 失败 → exit 3 全档退出码映射正确;**Phase 0 严格计数仍 7/6**(真推送属于 #6 飞书日报"调度层"最终补完,非新主任务;巡检项 4 "9/8 日报缺失"也借此周期手测补建,见 `.Log/日报-20260908.md`)
 - **Phase 0 #6 cron 入口补完(9/8)**:新增 `scripts/run_daily_report.sh` 飞书日报 cron 入口包装(默认 report_date=昨日 CST,输出 `.Log/日报-YYYYMMDD.md`,`--strict` 模式 + `--dry-run` 预览 + `--push-stub` 飞书推送占位),把 `daily_report.py` 脚本骨架升到"可定时调起"形态,真飞书 webhook 推送留给后续周期;手测 `bash scripts/run_daily_report.sh --dry-run` 输出 2026-09-07 Top 10 完整预览,默认模式写入 `.Log/日报-20260907.md`(1454 字节,15 议题 / 13 快照)
   - 2026-08-29 续:议题库 10 → 15(新增 issue-011 人口政策 / 012 教育改革 / 013 数字鸿沟 / 014 医疗资源 / 015 乡村振兴),关系图 12 → 18 条边
   - 2026-08-31 续:Phase 0 #4 起步 — `pulse_snapshots.schema.md` v1.0 + 首批 13 条模拟快照(6 议题 × 5 天)
@@ -36,7 +37,8 @@
 - 数据校验:`python3 scripts/validate_pulse.py --strict --check-issues data/issues.yaml`
 - 数据汇总:`python3 scripts/issue_summary.py`(议题数 / category 分组 / Top 5 热度 / 关系图出入度 / 跨表孤儿边校验)
 - 飞书日报生成:`python3 scripts/daily_report.py`(4 段 Markdown 日报:Top 10 热度 / 声量监控 / 关系图亮点 / 元信息)
-- 飞书日报 cron 入口:`bash scripts/run_daily_report.sh`(默认昨日 CST,输出 `.Log/日报-YYYYMMDD.md`;`--dry-run` 预览 / `--strict` 严格模式 / `--push-stub` 飞书推送占位)
+- 飞书日报 cron 入口:`bash scripts/run_daily_report.sh`(默认昨日 CST,输出 `.Log/日报-YYYYMMDD.md`;`--dry-run` 预览 / `--strict` 严格模式 / `--push` 真推飞书 webhook(走 env `FEISHU_WEBHOOK_URL` 或 `--webhook-url`)/ `--push-dry-run` 推送预览)
+- 飞书真推送模块:`python3 scripts/feishu_publish.py`(`--text` / `--from-file` / `--webhook-url` / `--title` / `--transport urllib|curl` / `--dry-run` 6 档;退出码 0 成功 / 1 参数 / 2 依赖 / 3 网络 / 4 4xx / 5 5xx)
 
 ## 关联文档
 - 产品立项与技术方案: [项目开发计划.md](./项目开发计划.md)
