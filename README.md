@@ -16,8 +16,9 @@
 - T4 每日 02:00 检查项目并更新 .plan/YYYYMMDD.md
 - T5 每日 03:00 完成小步开发并 commit + push
 
-## 状态(2026-09-09)
+## 状态(2026-09-11)
 - **Phase 0**: 7/6 严格计数 ✅(超额 1 项 = 飞书日报生成器脚本骨架,9/4 T5 周期叠加,9/6 README 状态段与项目开发计划.md 严格计数同步;原 6/6 主体任务 9/1 T5 周期收尾)
+- **Phase 0 #6 真飞书 cron 调度层补完(9/11)**:新增 `scripts/register_feishu_daily.sh` 一键注册脚本(4 档开关:`--dry-run` 默认预览 mavis cron create 命令 / `--apply` 提示手动调 mavis 工具 cron create / `--list` 查已注册 / `--unregister` 注销;cron_name=`feishu-社会-日报` / schedule=`0 9 * * *` / timezone=`Asia/Shanghai` / agent_name=`me` / session.mode=`new`)+ `docs/feishu-cron-setup.md` 完整 3 段流程文档(`FEISHU_WEBHOOK_URL` env 配置 → 09:00 mavis cron 注册 → 端到端验证 .Log/日报-YYYYMMDD.md + 飞书推送 + git commit/push);闭环 9/9 commit `fda4d88` 明确"留待后续 T5 周期"那段(真飞书 webhook 推送 `FEISHU_WEBHOOK_URL` env 配置 + 注册 09:00 `mavis cron`);9/10 巡检项 4 揭示"9/9 日报缺失 + 9/10 日报未生成"问题,本轮提供完整解决路径,张勇手动 `--apply` 触发后,9/12 02:20 巡检应能验证 .Log/日报-20260911.md 自动生成;手测 4 档开关全部正常(--dry-run 打印完整 mavis cron create 命令预览 + 设计说明 + 前置条件 checklist / --list 显示 5 个 09-社会-Society cron 预期表 / --apply 打印 mavis tool cron create API 调用 / --unregister 打印 3 步注销流程 / --foo 退出码 1);**Phase 0 严格计数仍 7/6**(本轮属 #6 飞书日报"调度层"最终段,非新主任务;`FEISHU_WEBHOOK_URL` env 配置 + 09:00 cron 真注册需张勇手动触发,本轮不擅自改系统状态)
 - **Phase 0 #6 飞书真推送补完(9/9)**:新增 `scripts/feishu_publish.py` 真飞书 webhook 推送模块(stdlib urllib 投递,无第三方 HTTP 依赖;`msg_type=text` 协议;`--webhook-url` / `--text` / `--from-file` / `--title` / `--transport` 5 档开关;退出码 0 成功 / 1 参数错 / 2 缺依赖 / 3 网络 / 4 4xx / 5 5xx / 6 其他;--dry-run 降级预览);`scripts/run_daily_report.sh` 9/8 预留的 `--push-stub` 升级为 `--push`(真调 `feishu_publish.py --from-file`),新增 `--push-dry-run`(隐式打开 PUSH,只预览 payload)/ `--webhook-url`(显式传,env 兜底)/ `--push-stub` 旧名兼容;手测 `bash scripts/run_daily_report.sh --push-dry-run` 输出 9/8 推送 payload 预览(标题前缀 `【SocietyAdvisor 日报 20260908】` + 1454 字符全文),`--push --webhook-url https://httpbin.org/status/200` 走通 stdlib urllib 真投递 HTTP 200 / 4xx → exit 4 / 5xx → exit 5 / DNS 失败 → exit 3 全档退出码映射正确;**Phase 0 严格计数仍 7/6**(真推送属于 #6 飞书日报"调度层"最终补完,非新主任务;巡检项 4 "9/8 日报缺失"也借此周期手测补建,见 `.Log/日报-20260908.md`)
 - **Phase 0 #6 cron 入口补完(9/8)**:新增 `scripts/run_daily_report.sh` 飞书日报 cron 入口包装(默认 report_date=昨日 CST,输出 `.Log/日报-YYYYMMDD.md`,`--strict` 模式 + `--dry-run` 预览 + `--push-stub` 飞书推送占位),把 `daily_report.py` 脚本骨架升到"可定时调起"形态,真飞书 webhook 推送留给后续周期;手测 `bash scripts/run_daily_report.sh --dry-run` 输出 2026-09-07 Top 10 完整预览,默认模式写入 `.Log/日报-20260907.md`(1454 字节,15 议题 / 13 快照)
   - 2026-08-29 续:议题库 10 → 15(新增 issue-011 人口政策 / 012 教育改革 / 013 数字鸿沟 / 014 医疗资源 / 015 乡村振兴),关系图 12 → 18 条边
@@ -38,6 +39,8 @@
 - 数据汇总:`python3 scripts/issue_summary.py`(议题数 / category 分组 / Top 5 热度 / 关系图出入度 / 跨表孤儿边校验)
 - 飞书日报生成:`python3 scripts/daily_report.py`(4 段 Markdown 日报:Top 10 热度 / 声量监控 / 关系图亮点 / 元信息)
 - 飞书日报 cron 入口:`bash scripts/run_daily_report.sh`(默认昨日 CST,输出 `.Log/日报-YYYYMMDD.md`;`--dry-run` 预览 / `--strict` 严格模式 / `--push` 真推飞书 webhook(走 env `FEISHU_WEBHOOK_URL` 或 `--webhook-url`)/ `--push-dry-run` 推送预览)
+- 飞书日报 cron 注册:`bash scripts/register_feishu_daily.sh`(`--dry-run` 预览 mavis cron create 命令 / `--apply` 提示手动调 mavis tool / `--list` 查 09-社会-Society 已注册 cron / `--unregister` 注销;详见 [docs/feishu-cron-setup.md](./docs/feishu-cron-setup.md))
+- 飞书日报 cron 注册流程:`docs/feishu-cron-setup.md` 3 段流程(`FEISHU_WEBHOOK_URL` env 配置 → 09:00 `mavis cron` 注册 → 端到端验证)
 - 飞书真推送模块:`python3 scripts/feishu_publish.py`(`--text` / `--from-file` / `--webhook-url` / `--title` / `--transport urllib|curl` / `--dry-run` 6 档;退出码 0 成功 / 1 参数 / 2 依赖 / 3 网络 / 4 4xx / 5 5xx)
 
 ## 关联文档
