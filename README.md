@@ -29,6 +29,7 @@
   - 2026-09-04 续(Phase 0 #6 起步 · 飞书日报):新增 `scripts/daily_report.py` 飞书日报生成器(4 段结构:Top 10 热度 + 声量监控汇总 + 关系图出入度 + 报告元信息,`--json` / `--strict` / `--output` / `--date` / `--top K` 五档开关,Markdown + JSON 双输出),Phase 0 严格计数 7/6(原 6/6 + 飞书日报生成器脚本骨架层,真实 cron 调度留待后续周期)
   - 2026-09-05 续(.plan/ 模式根因修复):`.gitignore` 末行加入 `.plan/   # 本地临时 plan 草稿,不入库` 排除规则,根除 9/2→9/3→9/4→9/5 4 周期 T1 报"uncommitted deletion"模式,9/6 02:20 巡检时点 working tree 完全 clean
   - 2026-09-08 续(Phase 0 #6 cron 入口补完):新增 `scripts/run_daily_report.sh` 飞书日报 cron 入口包装(默认 report_date=昨日 CST,输出 `.Log/日报-YYYYMMDD.md`,`--strict` / `--dry-run` / `--push-stub` 三档开关),把 `daily_report.py` 脚本骨架升到"可定时调起"形态,真飞书 webhook 推送留给后续周期;**Phase 0 严格计数仍 7/6**(cron 入口属于 #6 飞书日报"调度层"补完,非新主任务)
+  - 2026-09-11 续(T5 应急补建 9/11 周期 · Phase 0 #4 质量层 · 工具链再扩展):新增 `scripts/issue_trend.py` 议题热度趋势分析 CLI(对齐 `issue_summary.py` 风格,`argparse` + 退出码 + `--json`/`--strict`/`--top K`/`--source` 4 档开关 + Markdown/JSON 双输出);聚合 `data/pulse_snapshots.yaml` × `data/issues.yaml`,按议题×日期排序后计算 6 段指标:① 概览(6 个可计算趋势的议题 + 0 个快照不足议题 + 数据日期范围 2026-08-25~08-29 + 13 条趋势样本)② 涨幅 Top K(issue-002 房地产周期 +28.7% / issue-001 就业形势 +23.4% / issue-009 老龄化 +23.2%)③ 跌幅 Top K(issue-012 教育改革 -40.1% / issue-005 AI 伦理 -15.2% / issue-011 人口政策 -9.0%)④ 持续高热 Top K(issue-005 AI 伦理日均 1940 / issue-012 教育改革日均 1455 / issue-011 人口政策日均 1385)⑤ 负向情感预警 Top K(issue-001 就业形势 Δneg +0.060 恶化 / issue-009 老龄化 +0.040 / issue-005 AI 伦理 +0.020)⑥ 快照不足议题列表(本轮为 0);`--source foo` argparse 自动校验 exit 2 / `--strict` 0 不足议题 exit 0 / `--top 5` 5 段全输出 5 个;**Phase 0 严格计数仍 7/6**(本轮属 #4 质量层"趋势分析"维度扩展,非新主任务),工具链新增"跨日趋势 / 情感预警"维度,补完 Phase 0 #4 工具链的"时序分析"缺口
 - **Phase 1**: 0/7 待启动(Web App 骨架未搭建)
 
 ## API 骨架(Phase 0 收尾)
@@ -37,6 +38,7 @@
 - /pulse 用法:`GET /pulse?issue_id=issue-001` → 单议题多源时间序列;`&source=hybrid` 按来源过滤
 - 数据校验:`python3 scripts/validate_pulse.py --strict --check-issues data/issues.yaml`
 - 数据汇总:`python3 scripts/issue_summary.py`(议题数 / category 分组 / Top 5 热度 / 关系图出入度 / 跨表孤儿边校验)
+- 趋势分析:`python3 scripts/issue_trend.py`(跨日声量 delta / Top 涨幅·跌幅 / 持续高热 / 负向情感预警,`--source` 5 选 1 过滤)
 - 飞书日报生成:`python3 scripts/daily_report.py`(4 段 Markdown 日报:Top 10 热度 / 声量监控 / 关系图亮点 / 元信息)
 - 飞书日报 cron 入口:`bash scripts/run_daily_report.sh`(默认昨日 CST,输出 `.Log/日报-YYYYMMDD.md`;`--dry-run` 预览 / `--strict` 严格模式 / `--push` 真推飞书 webhook(走 env `FEISHU_WEBHOOK_URL` 或 `--webhook-url`)/ `--push-dry-run` 推送预览)
 - 飞书日报 cron 注册:`bash scripts/register_feishu_daily.sh`(`--dry-run` 预览 mavis cron create 命令 / `--apply` 提示手动调 mavis tool / `--list` 查 09-社会-Society 已注册 cron / `--unregister` 注销;详见 [docs/feishu-cron-setup.md](./docs/feishu-cron-setup.md))
