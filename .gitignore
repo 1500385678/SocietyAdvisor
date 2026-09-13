@@ -5,4 +5,5 @@
 node_modules/
 .venv/
 __pycache__/
-.plan/   # 本地临时 plan 草稿,不入库(T5 应急补建 9/5 周期采纳)
+# 本地临时 plan 草稿,不入库(T5 应急补建 9/5 周期采纳;9/14 修正尾注释导致 pattern 失效的 bug)
+.plan/
